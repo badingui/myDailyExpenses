@@ -1,0 +1,47 @@
+page-home {
+    .expense-item
+    {
+        width: 30%;
+    }
+    
+    .expense-card
+    {
+        height: 96vw;
+        max-height: 96vw;
+        overflow-y: auto;
+    }
+    
+    .buttons-container.bottom
+    {
+        position: absolute;
+        bottom: 7%;
+    }
+    
+    .card-background-page {
+    
+        ion-card {
+          position: relative;
+          text-align: center;
+        }
+      
+        .card-title {
+          position: absolute;
+          top: 6%;
+          font-size: 2.0em;
+          width: 100%;
+          font-weight: bold;
+          color: black;
+        }
+      
+        .card-subtitle {
+            font-size: 4em;
+            position: absolute;
+            top: 30%;
+            font-weight: bolder;
+            width: 100%;
+            color: #000000;
+        }
+      
+      }
+}
+

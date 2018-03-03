@@ -1,0 +1,63 @@
+page-stats {
+
+
+.duo-toggle
+{
+    ion-label{
+        display: block-inline;
+        width: 30%;
+    }
+
+    ion-toggle{
+        display: block-inline;
+        width: 30%;
+    }
+}
+
+    .card-background-page {
+    
+        .stats-item
+        {
+            width: 50%;
+            display: inline-block;
+        }
+
+        .stats-item.left
+        {
+            float: left;
+        }
+
+        .stats-item.right
+        {
+            float: right;
+        }
+
+        ion-card {
+          position: relative;
+        }
+
+
+          ion-row {
+            position: absolute; 
+            top: 0%;
+          }
+          .card-title {
+          position: absolute;
+          top: 6%;
+          font-size: 1.0em;
+          font-weight: bold;
+          color: black;
+          left: 7px;
+        }
+      
+        .card-subtitle {
+            font-size: 2em;
+            position: absolute;
+            top: 30%;
+            font-weight: bolder;
+            color: #000000;
+            left: 7px;
+        }
+      
+      }
+}

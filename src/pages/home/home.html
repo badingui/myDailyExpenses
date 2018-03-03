@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <ion-card>
+        <img src="assets/imgs/current-expense-bg.jpg"/>
+        <div class="card-title">Current Expense</div>
+        <div class="card-subtitle">10 $</div>
+      </ion-card>
+      <ion-card class="expense-card">
+          <ion-card-header>
+            Expenses
+          </ion-card-header>
+          
+          <ion-item *ngFor="let expense of listeExpenses">
+              <ion-icon name='ios-basket' item-start></ion-icon>
+              <ion-label><span class="expense-item">{{expense.ExpenseTitle}}</span></ion-label>
+              <ion-label><span class="expense-item">{{expense.ExpenseAmount}}</span></ion-label>
+              <ion-label>(&#36;)</ion-label>
+            </ion-item>
+
+      </ion-card>
+
+      <ion-fab bottom right>
+          <button ion-fab (click)="presentPrompt()"> 
+            <ion-icon name='ios-add' item-start></ion-icon>
+          </button>
+        </ion-fab>
+    
+
+</ion-content>

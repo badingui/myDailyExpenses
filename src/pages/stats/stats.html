@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Stats
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="which_month">
+        <ion-segment-button value="last-month">
+          Last Month
+        </ion-segment-button>
+        <ion-segment-button value="current-month">
+          Current Month
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="card-background-page">
+
+    <div [ngSwitch]="which_month">
+          <div *ngSwitchCase="'last-month'">
+              <ion-card>
+                  <img src="assets/imgs/current-expense-bg.jpg"/>
+                  <div class="card-title">Last Month Status :</div>
+                  <div class="card-subtitle">GOOD</div>
+                </ion-card>
+
+              <ion-card>
+                  <img src="assets/imgs/debt-bg.png"/>
+                  <div class="card-title">Last Month Debt :</div>
+                  <div class="card-subtitle">10 $</div>
+                </ion-card>
+
+            <ion-card>
+                <img src="assets/imgs/saved-bg.png"/>
+                <div class="card-title">Last Month 'Saved Money' :</div>
+                <div class="card-subtitle">10 $</div>
+              </ion-card>
+          </div>
+
+          <div *ngSwitchCase="'current-month'">
+              <ion-card>
+                  <img src="assets/imgs/current-expense-bg.jpg"/>
+                  <div class="card-title">Current Month Status :</div>
+                  <div class="card-subtitle">GOOD</div>
+                </ion-card>
+      
+                <ion-card>
+                    <img src="assets/imgs/debt-bg.png"/>
+                    <div class="card-title">Current Month Debt :</div>
+                    <div class="card-subtitle">10 $</div>
+                  </ion-card>
+      
+                  <ion-card>
+                      <img src="assets/imgs/saved-bg.png"/>
+                      <div class="card-title">Current Month 'Saved Money' :</div>
+                      <div class="card-subtitle">10 $</div>
+                    </ion-card>
+          </div>
+
+</div>
+
+</ion-content>
