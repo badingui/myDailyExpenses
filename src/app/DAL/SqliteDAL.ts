@@ -53,6 +53,7 @@ export class SqliteDAL
     
         console.log("liste: " + lstExpenses);
 
+        //d
         return lstExpenses;
     }
 }
