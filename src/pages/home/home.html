@@ -8,7 +8,7 @@
     <ion-card>
         <img src="assets/imgs/current-expense-bg.jpg"/>
         <div class="card-title">Current Expense</div>
-        <div class="card-subtitle">10 $</div>
+        <div class="card-subtitle">{{currentExpenses}} $</div>
       </ion-card>
       <ion-card class="expense-card">
           <ion-card-header>
@@ -23,12 +23,13 @@
             </ion-item>
 
       </ion-card>
-
-      <ion-fab bottom right>
-          <button ion-fab (click)="presentPrompt()"> 
-            <ion-icon name='ios-add' item-start></ion-icon>
-          </button>
-        </ion-fab>
     
+        <ion-fab right bottom>
+          <button ion-fab><ion-icon name="arrow-dropup"></ion-icon></button>
+          <ion-fab-list side="top">
+            <button ion-fab (click)="presentPrompt()"><ion-icon name="md-add"></ion-icon></button>
+            <button ion-fab><ion-icon name="md-cloud-upload"></ion-icon></button>
+          </ion-fab-list>
+        </ion-fab>
 
 </ion-content>

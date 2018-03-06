@@ -13,7 +13,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AppPreferences } from '@ionic-native/app-preferences';
 import { PreferencesDAL } from './DAL/PreferencesDAL';
+import { SqliteDAL } from './DAL/SqliteDAL';
 import { PreferencesManager } from './PreferencesManager';
+
+import { IonicStorageModule } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { PreferencesManager } from './PreferencesManager';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '5t0r4g3',
+      driverOrder: [ 'indexeddb', 'sqlite']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,6 +49,8 @@ import { PreferencesManager } from './PreferencesManager';
     AppPreferences,
     PreferencesManager,
     PreferencesDAL,
+    SqliteDAL,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

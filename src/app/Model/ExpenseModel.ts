@@ -1,6 +1,6 @@
 export class ExpenseModel
 {
-   constructor(private ExpenseTitle: string, private ExpenseAmount: number) {
+   constructor(public ExpenseTitle: string, public ExpenseAmount: number) {
     
   }
 }

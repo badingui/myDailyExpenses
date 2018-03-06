@@ -1,4 +1,4 @@
-import {Injectable, Inject} from '@angular/core';
+import {Injectable} from '@angular/core';
 import { AppPreferences } from '@ionic-native/app-preferences';
 
 
@@ -11,14 +11,15 @@ export class PreferencesManager
 
     public savePreference(key: string, value: string)
     {
+        console.log("save preferences");
         this.appPreferences.store(this.dictionary, key, value);
     }
 
-    public getPreference(key: string)
+    public async getPreference(key: string)
     {
-        var result : string;
+        var result : Promise<string>;
 
-        this.appPreferences.fetch(key).then((res) => { console.log(res); if(res) result = res; });
+        result = await this.appPreferences.fetch(this.dictionary, key);//.then((res) => {  return res; });
 
         return result;
     }

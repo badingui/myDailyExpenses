@@ -5,35 +5,16 @@ import {PreferencesManager} from '../PreferencesManager';
 @Injectable()
 export class PreferencesDAL
 {
-    public static CurrencyName = "dollar";
-    public static CurrencySymbole = "&#36;";
-    public static DailyBudget = 60;
+    public static CurrencyName : string;
+    public static CurrencySymbole : string;
+    public static DailyBudget : number;
+    public static myTime : Date;
     public static preferencesManager;
 
 
     constructor(preferencesManager: PreferencesManager) {
-
         
         PreferencesDAL.preferencesManager = preferencesManager;
-
-        let CurrencyName = PreferencesDAL.preferencesManager.getPreference("CurrencyName");
-        console.log("cc" + CurrencyName);
-        if(CurrencyName)
-        {
-            PreferencesDAL.CurrencyName = CurrencyName;
-        }
-
-        var CurrencySymbole = PreferencesDAL.preferencesManager.getPreference("CurrencySymbole");
-        if(CurrencySymbole)
-        {
-            PreferencesDAL.CurrencySymbole = CurrencySymbole;
-        }
-
-        var DailyBudget = PreferencesDAL.preferencesManager.getPreference("DailyBudget");
-        if(DailyBudget)
-        {
-            PreferencesDAL.DailyBudget = parseInt(DailyBudget);
-        }
     }
 
     public  SetCurrencyName(value: string)
@@ -51,20 +32,70 @@ export class PreferencesDAL
         PreferencesDAL.preferencesManager.savePreference("DailyBudget", value + "");
     }
 
-
-    public  GetCurrencyName()
+    public  setTime(value: string)
     {
+        PreferencesDAL.preferencesManager.savePreference("myTime", value);
+    }
+
+    public async GetCurrencyName()
+    {
+        let CurrencyName = await PreferencesDAL.preferencesManager.getPreference("CurrencyName");
+       
+        if(CurrencyName)
+        {
+            PreferencesDAL.CurrencyName = CurrencyName;
+        }
+        else
+        {
+            return "dollar";
+        }
+        
         return PreferencesDAL.CurrencyName;
     }
 
-    public  GetCurrencySymbole()
+    public async GetCurrencySymbole()
     {
+        var CurrencySymbole = await PreferencesDAL.preferencesManager.getPreference("CurrencySymbole");
+        
+        if(CurrencySymbole)
+        {
+            PreferencesDAL.CurrencySymbole = CurrencySymbole;
+        }
+        else
+        {
+            return "&#36;";
+        }
         return PreferencesDAL.CurrencySymbole;
     }
 
-    public  GetDailyBudget()
+    public  async GetDailyBudget()
     {
+        var DailyBudget = await PreferencesDAL.preferencesManager.getPreference("DailyBudget");
+
+        if(DailyBudget)
+        {
+            PreferencesDAL.DailyBudget = parseInt(DailyBudget);
+        }
+        else
+        {
+            return 60;
+        }
+
         return PreferencesDAL.DailyBudget;
     }
 
+    public  async getTime()
+    {
+        var myTime = await PreferencesDAL.preferencesManager.getPreference("myTime");
+        if(myTime)
+        {
+            PreferencesDAL.myTime = myTime;
+        }
+        else
+        {
+            return new Date(0,0,0,0,0,0,0);
+        }
+
+        return PreferencesDAL.myTime;
+    }
 }
