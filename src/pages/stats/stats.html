@@ -32,13 +32,13 @@
               <ion-card>
                   <img src="assets/imgs/debt-bg.png"/>
                   <div class="card-title">Last Month Debt :</div>
-                  <div class="card-subtitle">10 $</div>
+                  <div class="card-subtitle">{{currentMonthDebt}}  <span [innerHTML]="CurrentCurrencySymbole"></span></div>
                 </ion-card>
 
             <ion-card>
                 <img src="assets/imgs/saved-bg.png"/>
                 <div class="card-title">Last Month 'Saved Money' :</div>
-                <div class="card-subtitle">10 $</div>
+                <div class="card-subtitle">{{currentMonthSaves}}  <span [innerHTML]="CurrentCurrencySymbole"></span></div>
               </ion-card>
           </div>
 

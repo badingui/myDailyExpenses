@@ -5,10 +5,10 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-    <ion-card>
+    <ion-card [ngStyle]="this.currentExpenses > this.dailyBudget ? {'border': '3px solid red'} : {}">
         <img src="assets/imgs/current-expense-bg.jpg"/>
         <div class="card-title">Current Expense</div>
-        <div class="card-subtitle">{{currentExpenses}} $</div>
+        <div class="card-subtitle">{{currentExpenses}} <span [innerHTML]="currentCurrencySymbole"></span></div>
       </ion-card>
       <ion-card class="expense-card">
           <ion-card-header>
@@ -19,16 +19,15 @@
               <ion-icon name='ios-basket' item-start></ion-icon>
               <ion-label><span class="expense-item">{{expense.ExpenseTitle}}</span></ion-label>
               <ion-label><span class="expense-item">{{expense.ExpenseAmount}}</span></ion-label>
-              <ion-label>(&#36;)</ion-label>
+              <ion-label><span [innerHTML]="currentCurrencySymbole"></span></ion-label>
             </ion-item>
-
       </ion-card>
     
         <ion-fab right bottom>
           <button ion-fab><ion-icon name="arrow-dropup"></ion-icon></button>
           <ion-fab-list side="top">
             <button ion-fab (click)="presentPrompt()"><ion-icon name="md-add"></ion-icon></button>
-            <button ion-fab><ion-icon name="md-cloud-upload"></ion-icon></button>
+            <!-- <button ion-fab><ion-icon name="md-cloud-upload"></ion-icon></button> -->
           </ion-fab-list>
         </ion-fab>
 

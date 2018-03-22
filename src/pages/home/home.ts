@@ -3,25 +3,30 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ExpenseModel } from '../../app/Model/ExpenseModel';
 import { SqliteDAL } from '../../app/DAL/SqliteDAL';
+import { CommonData } from '../../app/CommonData';
+import { BasePage } from '../BasePage/BasePage';
+import { PreferencesDAL } from '../../app/DAL/PreferencesDAL';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 
-export class HomePage {
+export class HomePage extends BasePage{
 
   public listeExpenses: ExpenseModel[] = [];
   public currentExpenses = 0;
+  public expensesStyle: {};
 
-  constructor(private alertCtrl: AlertController, private storage: SqliteDAL) {
+  constructor(private alertCtrl: AlertController, private storage: SqliteDAL,private preferences: PreferencesDAL) {
+      super();
+
+      this.LoadCommonData();
+
       this.storage.GetExpenses().then(r => 
-        {
-          console.log("ok: " + r);
-          
+      {
           if(r)
           {
-            console.log("ok: " + r);
             this.listeExpenses = r;
             this.listeExpenses.forEach((e) => this.currentExpenses =  Number(this.currentExpenses) + Number(e.ExpenseAmount));
           }
@@ -29,6 +34,7 @@ export class HomePage {
       });
 
       
+
   }
 
   presentPrompt() {
@@ -63,12 +69,19 @@ export class HomePage {
 
             this.currentExpenses = 0;
             this.listeExpenses.forEach((e) => this.currentExpenses =  Number(this.currentExpenses) + Number(e.ExpenseAmount));
-
           }
         }
       ]
     });
     alert.present();
+  }
+
+  private LoadCommonData()
+  {
+    console.log("[MyLogger]: LOAD Common Data");
+
+      this.preferences.GetCurrencySymbole().then(r => this.currentCurrencySymbole = r);
+      this.preferences.GetDailyBudget().then(r => this.dailyBudget = r);
   }
 
 }
